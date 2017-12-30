@@ -1,0 +1,47 @@
+{
+  "name": "ionic-logger",
+  "version": "0.0.1",
+  "description": "Ionic 2+ plugin providing a logger service.",
+  "main": "./dist/es2015/ionic-logger.js",
+  "typings": "./dist/es2015/ionic-logger.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "node ngc-build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonio-spinelli/ionic-logger.git"
+  },
+  "keywords": [
+    "ionic2",
+    "ionic",
+    "angular2",
+    "logger",
+    "log"
+  ],
+  "author": "Antonio Spinelli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/antonio-spinelli/ionic-logger/issues"
+  },
+  "homepage": "https://github.com/antonio-spinelli/ionic-logger#readme",
+  "devDependencies": {
+    "@angular/common": "5.0.3",
+    "@angular/compiler": "5.0.3",
+    "@angular/compiler-cli": "5.0.3",
+    "@angular/core": "5.0.3",
+    "@angular/forms": "5.0.3",
+    "@angular/http": "5.0.3",
+    "@angular/platform-browser": "5.0.3",
+    "@angular/platform-browser-dynamic": "5.0.3",
+    "@angular/platform-server": "5.0.3",
+    "fs-extra": "5.0.0",
+    "jshint": "2.9.5",
+    "rxjs": "5.5.2",
+    "typescript": "2.4.2",
+    "zone.js": "0.8.18"
+  },
+  "peerDependencies": {
+    "ionic-angular": "3.9.2"
+  }
+}
