@@ -6,7 +6,7 @@
   "typings": "./dist/es2015/ionic-logger.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "node ngc-build.js"
+    "build": "node ngc-build.js"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,6 @@
     "zone.js": "0.8.18"
   },
   "peerDependencies": {
-    "ionic-angular": "3.9.2"
+    "ionic-angular": "~3.9.0"
   }
 }
