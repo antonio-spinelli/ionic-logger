@@ -7,7 +7,7 @@ const distFolder = './dist';
 
 process();
 
-async function process() {
+function process() {
   console.log('Clean dist folder...');
   fs.removeSync(distFolder);
 
@@ -15,7 +15,9 @@ async function process() {
   const es2015 = runNgc(`${baseFolder}/tsconfig.json`);
   const umd = runNgc(`${baseFolder}/tsconfig.umd.json`);
 
-  const build = await Promise.all([es2015, umd]);
+  Promise.all([es2015, umd]).then(data => {
+    console.log('Build completed');
+  });
 }
 
 function runNgc(tsConfigPath) {
