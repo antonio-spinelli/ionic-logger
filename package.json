@@ -43,16 +43,12 @@
   "dependencies": {
     "@ionic-native/core": "~4.5.2",
     "@ionic-native/file": "~4.5.2",
-    "@types/lodash": "~4.14.92",
-    "lodash": "~4.17.4",
     "moment": "~2.20.1"
   },
   "peerDependencies": {
     "@ionic-native/core": "~4.5.2",
     "@ionic-native/file": "~4.5.2",
-    "@types/lodash": "~4.14.92",
     "ionic-angular": "~3.9.2",
-    "lodash": "~4.17.4",
     "moment": "~2.20.1"
   }
 }

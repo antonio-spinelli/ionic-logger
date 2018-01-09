@@ -1,7 +1,6 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core'
 import { Platform } from 'ionic-angular'
 import { File } from '@ionic-native/file'
-import { isEmpty, trim } from 'lodash'
 import moment from 'moment'
 
 export const DOC_DIR = new InjectionToken('DOC_DIR')
@@ -51,7 +50,8 @@ export class Logger {
       }).then(success => {
         return that.loadData().then(() => {
           let today = this.getToday()
-          if (!isEmpty(trim(this.data[today]))) {
+          let data = this.data[today]
+          if (data && data.trim().length > 0) {
             this.writeData(today)
           }
           that._initialized = true
