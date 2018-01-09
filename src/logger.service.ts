@@ -1,7 +1,7 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core'
-import { Platform } from 'ionic-angular'
-import { File } from '@ionic-native/file'
 import moment from 'moment'
+
+import { FileSystem } from './file-system.interface'
 
 export const DOC_DIR = new InjectionToken('DOC_DIR')
 export const LOG_DIR = new InjectionToken('LOG_DIR')
@@ -17,10 +17,9 @@ export class Logger {
   private _data: any = {}
   private _documentsDirectory: string
   private _debug: boolean = true
+  private _file: FileSystem = null
 
   constructor(
-    private file: File,
-    private platform: Platform,
     @Inject(DOC_DIR) private DOC_DIR: string,
     @Inject(LOG_DIR) private LOG_DIR: string,
     @Inject(LOG_DAY_FORMAT) private LOG_DAY_FORMAT: string,
@@ -28,10 +27,11 @@ export class Logger {
   ) {
   }
 
-  public initFolders(): Promise<boolean> {
+  public init(file: FileSystem): Promise<boolean> {
     let that = this
-    if (that.isMobile()) {
-      that._logPath = that.documentsDirectory
+    that._file = file
+    if (that._file) {
+      that._logPath = that._file.documentsDirectory
       return that.checkAndCreateDir(that._logPath, that.DOC_DIR).then(success => {
         if (success) {
           that._logPath = that._logPath + that.DOC_DIR
@@ -100,16 +100,12 @@ export class Logger {
     this.addToLog('ERROR', message, skipConsoleLog, console.error)
   }
 
-  private isMobile(): boolean {
-    return !!this.documentsDirectory
-  }
-
   private checkAndCreateDir(path: string, directory: string): Promise<boolean> {
     let that = this
-    return that.file.checkDir(path, directory).then(success => {
+    return that._file.checkDir(path, directory).then(success => {
       return true // do nothing
     }).catch(error => {
-      return that.file.createDir(path, directory, false).then(success => {
+      return that._file.createDir(path, directory, false).then(success => {
         that.printDebugMessage('[' + directory + ' checkAndCreateDir] success')
         return true
       }).catch(error => {
@@ -135,7 +131,7 @@ export class Logger {
     let that = this
     let today = that.getToday()
     let file = today + '.txt'
-    return that.file.readAsText(that._logPath, file).then(res => {
+    return that._file.readAsText(that._logPath, file).then(res => {
       return res
     }).catch(error => {
       return ''
@@ -145,23 +141,11 @@ export class Logger {
   }
 
   private writeData(today: string) {
-    this.file.writeFile(this._logPath, today + '.txt', this.data[today], { replace: true }).then(res => {
+    this._file.writeFile(this._logPath, today + '.txt', this.data[today], true).then(res => {
       // this.printDebugMessage(res)
     }).catch(error => {
       console.error(error)
     })
-  }
-
-  private get documentsDirectory(): string {
-    if (!this._documentsDirectory) {
-      if (this.platform.is('ios')) {
-        this._documentsDirectory = this.file.documentsDirectory
-      } else if (this.platform.is('android')) {
-        this._documentsDirectory = this.file.externalRootDirectory
-      }
-      this.printDebugMessage('[Logger] Documents Directory: ' + this._documentsDirectory)
-    }
-    return this._documentsDirectory
   }
 
   private printDebugMessage(message) {

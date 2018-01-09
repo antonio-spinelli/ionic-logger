@@ -41,13 +41,9 @@
     "zone.js": "0.8.18"
   },
   "dependencies": {
-    "@ionic-native/core": "~4.5.2",
-    "@ionic-native/file": "~4.5.2",
     "moment": "~2.20.1"
   },
   "peerDependencies": {
-    "@ionic-native/core": "~4.5.2",
-    "@ionic-native/file": "~4.5.2",
     "ionic-angular": "~3.9.2",
     "moment": "~2.20.1"
   }

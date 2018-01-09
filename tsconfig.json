@@ -23,6 +23,7 @@
   },
   "files": [
     "ionic-logger.ts",
+    "src/file-system.interface.ts",
     "src/logger.service.ts",
     "src/module.ts"
   ],
