@@ -42,3 +42,29 @@ export class AppModule {}
 | logDayFormat          | string   | Day format. Defaults to 'YYYY-MM-DD' |
 | logHourFormat          | string   | Hour format. Defaults to 'HH:mm:ss:SSS' |
 | debug | boolean  | Boolean to enable debug mode. Defaults to false |
+
+## Example
+
+- app.component.ts
+
+```typescript
+import { Platform } from 'ionic-angular';
+import { Logger } from 'ionic-logger';
+import { FileSystemService } from './file-system.service'; // your own service or model that implements ionic-logger FileSystem interface
+
+...
+
+constructor(
+  private logger: Logger,
+  private platform: Platform
+) {
+  this.platform.ready().then(() => {
+
+    ...
+
+    this.logger.init(fileSystemService).then((status) => {
+      this.logger.debug('[Logger] init: ' + status);
+    })
+  }
+}
+```
