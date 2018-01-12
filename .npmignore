@@ -14,3 +14,9 @@ Thumbs.db
 /src
 demo
 config
+scripts
+.editorconfig
+.jshint
+.nvmrc
+tsconfig.json
+tsconfig.umd.json
