@@ -34,10 +34,10 @@ export class Logger {
       that._logPath = that._file.documentsDirectory
       return that.checkAndCreateDir(that._logPath, that.DOC_DIR).then(success => {
         if (success) {
-          that._logPath = that._logPath + that.DOC_DIR
+          that._logPath = that._logPath + that.DOC_DIR + '/'
           return that.checkAndCreateDir(that._logPath, that.LOG_DIR).then(success => {
             if (success) {
-              that._logPath = that._logPath + '/' + that.LOG_DIR
+              that._logPath = that._logPath + that.LOG_DIR
             }
             return success
           }).catch(error => {
