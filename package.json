@@ -6,7 +6,7 @@
   "typings": "./dist/es2015/ionic-logger.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node ngc-build.js"
+    "build": "node ./scripts/ngc-build.js"
   },
   "repository": {
     "type": "git",
