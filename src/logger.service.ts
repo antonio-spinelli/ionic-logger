@@ -16,14 +16,14 @@ export class Logger {
   private _logPath: string = null
   private _data: any = {}
   private _documentsDirectory: string
-  private _debug: boolean = true
   private _file: FileSystem = null
 
   constructor(
     @Inject(DOC_DIR) private DOC_DIR: string,
     @Inject(LOG_DIR) private LOG_DIR: string,
     @Inject(LOG_DAY_FORMAT) private LOG_DAY_FORMAT: string,
-    @Inject(LOG_HOUR_FORMAT) private LOG_HOUR_FORMAT: string
+    @Inject(LOG_HOUR_FORMAT) private LOG_HOUR_FORMAT: string,
+    @Inject(DEBUG) private DEBUG: boolean
   ) {
   }
 
@@ -149,7 +149,7 @@ export class Logger {
   }
 
   private printDebugMessage(message) {
-    this._debug ? this.debug(message) : undefined
+    this.DEBUG ? this.debug(message) : undefined
   }
 
 }
