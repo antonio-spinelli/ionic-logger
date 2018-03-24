@@ -1,6 +1,6 @@
 {
   "name": "ionic-logger",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Ionic 2+ plugin providing a logger service.",
   "main": "./dist/es2015/ionic-logger.js",
   "typings": "./dist/es2015/ionic-logger.d.ts",
