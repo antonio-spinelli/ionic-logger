@@ -3,11 +3,12 @@ import moment from 'moment'
 
 import { FileSystem } from './file-system.interface'
 
+export const DEBUG = new InjectionToken('DEBUG')
 export const DOC_DIR = new InjectionToken('DOC_DIR')
 export const LOG_DIR = new InjectionToken('LOG_DIR')
 export const LOG_DAY_FORMAT = new InjectionToken('LOG_DAY_FORMAT')
 export const LOG_HOUR_FORMAT = new InjectionToken('LOG_HOUR_FORMAT')
-export const DEBUG = new InjectionToken('DEBUG')
+export const PRINT_DEBUG_MSG = new InjectionToken('PRINT_DEBUG_MSG')
 
 @Injectable()
 export class Logger {
@@ -19,11 +20,12 @@ export class Logger {
   private _file: FileSystem = null
 
   constructor(
+    @Inject(DEBUG) private DEBUG: boolean,
     @Inject(DOC_DIR) private DOC_DIR: string,
     @Inject(LOG_DIR) private LOG_DIR: string,
     @Inject(LOG_DAY_FORMAT) private LOG_DAY_FORMAT: string,
     @Inject(LOG_HOUR_FORMAT) private LOG_HOUR_FORMAT: string,
-    @Inject(DEBUG) private DEBUG: boolean
+    @Inject(PRINT_DEBUG_MSG) private PRINT_DEBUG_MSG: boolean
   ) {
   }
 
@@ -93,7 +95,9 @@ export class Logger {
   }
 
   public debug(message: string, skipConsoleLog?: boolean) {
-    this.addToLog('DEBUG', message, skipConsoleLog, console.debug)
+    if (this.PRINT_DEBUG_MSG) {
+      this.addToLog('DEBUG', message, skipConsoleLog, console.debug)
+    }
   }
 
   public error(message: string, skipConsoleLog?: boolean) {

@@ -7,12 +7,13 @@ import {
   LOG_DAY_FORMAT,
   LOG_DIR,
   LOG_HOUR_FORMAT,
-  Logger
+  Logger,
+  PRINT_DEBUG_MSG
 } from './logger.service'
 
 @NgModule({
   imports: [IonicModule],
-  providers: [ Logger ]
+  providers: [Logger]
 })
 export class IonicLoggerModule {
   /**
@@ -24,11 +25,12 @@ export class IonicLoggerModule {
     return {
       ngModule: IonicLoggerModule,
       providers: [
+        { provide: DEBUG, useValue: !!config.debug },
         { provide: DOC_DIR, useValue: config.docDir || 'ionic-logger' },
         { provide: LOG_DIR, useValue: config.logDir || 'log' },
         { provide: LOG_DAY_FORMAT, useValue: config.logDayFormat || 'YYYY-MM-DD' },
         { provide: LOG_HOUR_FORMAT, useValue: config.logHourFormat || 'HH:mm:ss:SSS' },
-        { provide: DEBUG, useValue: !!config.debug },
+        { provide: PRINT_DEBUG_MSG, useValue: !!config.printDebugMessages },
         Logger
       ]
     }
@@ -36,9 +38,10 @@ export class IonicLoggerModule {
 }
 
 export interface IonicLoggerModuleConfig {
+  debug?: boolean
   docDir?: string
   logDir?: string
   logDayFormat?: string
   logHourFormat?: string
-  debug?: boolean
+  printDebugMessages?: boolean
 }
