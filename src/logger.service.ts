@@ -82,7 +82,7 @@ export class Logger {
       }
     }
     if (!skipConsoleLog && consoleLogMethod) {
-      consoleLogMethod(message)
+      consoleLogMethod.call(console, message)
     }
   }
 
