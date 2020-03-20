@@ -2,7 +2,7 @@
 
 [![NPM](https://nodei.co/npm/ionic-logger.png?downloads=true)](https://nodei.co/npm/ionic-logger/)
 
-Ionic 2+ plugin providing a logger service.
+Ionic 5 plugin providing a logger service.
 
 ## Installation
 
