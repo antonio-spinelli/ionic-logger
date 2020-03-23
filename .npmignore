@@ -16,7 +16,7 @@ demo
 config
 scripts
 .editorconfig
-.jshint
+.jshintrc
 .nvmrc
 tsconfig.json
 tsconfig.umd.json
