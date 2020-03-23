@@ -1,5 +1,4 @@
 import { ModuleWithProviders, NgModule } from '@angular/core'
-import { IonicModule } from 'ionic-angular'
 
 import {
   DOC_DIR,
@@ -12,7 +11,7 @@ import {
 } from './logger.service'
 
 @NgModule({
-  imports: [IonicModule],
+  imports: [],
   providers: [Logger]
 })
 export class IonicLoggerModule {
