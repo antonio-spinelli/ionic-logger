@@ -2,9 +2,11 @@
 
 [![NPM](https://nodei.co/npm/ionic-logger.png?downloads=true)](https://nodei.co/npm/ionic-logger/)
 
-Ionic 2+ plugin providing a logger service.
+Ionic 4 plugin providing a logger service.
 
 ## Installation
+
+For Ionic v2/3 use [v0.4.1](https://github.com/antonio-spinelli/ionic-logger/tree/0.4.1)
 
 Make sure you have Ionic and Angular installed.
 
